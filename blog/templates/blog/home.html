@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}HOME{% endblock title %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in posts %}
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text">{{post.body|truncatewords:30}}
+                    <a href="{{post.get_absolute_url}}">see more</a>                  </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Created at {{post.publish}}</small>
+                  </div>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
